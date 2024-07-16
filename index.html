@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TAG DE BAGAGEM</title>
+    <link rel="icon" href="https://cdn-icons-png.freepik.com/512/10330/10330532.png" type="image/x-icon">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Container principal -->
+    <div class="logo">
+        <img src="https://irp.cdn-website.com/fb21f8a1/dms3rep/multi/Logo_Blue_Tree_Azul.svg" alt="logo">
+    </div>
+    <div class="content-container">
+        <!-- Imagem -->
+        <div class="image-container">
+            <img src="https://img.freepik.com/fotos-premium/mala-de-viagem-no-quarto-de-hotel_693425-4601.jpg" alt="Imagem">
+        </div>
+        <!-- Formulário -->
+        <div class="form-container">
+            <form id="tagForm" onsubmit="generateTag(event)">
+                <div class="input-block">
+                    <input type="text" id="name" name="name" required>
+                    <span class="placeholder">Nome:</span>
+                </div>
+                <div class="input-block">
+                    <input type="text" id="apto" name="apto" required>
+                    <span class="placeholder">Apto:</span>
+                </div>
+                <div class="input-block">
+                    <input type="number" id="quantity" name="quantity" min="1" required onkeypress="handleKeyPress(event)">
+                    <span class="placeholder">Quantidade:</span>
+                </div>
+                <!-- Botões -->
+                <div class="button-container">
+                    <button type="button" class="generate-button" onclick="generateTag(event)">Gerar</button>
+                    <button type="button" class="print-button" onclick="window.print()">Imprimir</button>
+                    <button type="button" class="refresh-button" onclick="clearTags()">Nova</button>
+                </div>
+            </form>
+        </div>
+    </div>
+    <!-- Tags -->
+    <div id="tags" class="tag-container">
+        <!-- Tags geradas serão inseridas aqui -->
+    </div>
+    <script>
+        var generatedNumbers = new Set();
+
+        function formatDateTime(date) {
+            var d = new Date(date);
+            var day = ("0" + d.getDate()).slice(-2);
+            var month = ("0" + (d.getMonth() + 1)).slice(-2);
+            var year = d.getFullYear();
+            var hours = ("0" + d.getHours()).slice(-2);
+            var minutes = ("0" + d.getMinutes()).slice(-2);
+            return `${day}/${month}/${year} ${hours}:${minutes}`;
+        }
+
+        function getRandomNumber() {
+            let number;
+            do {
+                number = Math.floor(Math.random() * 900) + 100;
+            } while (generatedNumbers.has(number));
+            generatedNumbers.add(number);
+            return number;
+        }
+
+        function generateTag(event) {
+            event.preventDefault();
+
+            var name = document.getElementById("name").value;
+            var apto = document.getElementById("apto").value;
+            var date = new Date();
+            var formattedDateTime = formatDateTime(date);
+            var quantity = parseInt(document.getElementById("quantity").value);
+
+            var tagContainer = document.getElementById("tags");
+            tagContainer.innerHTML = "";
+
+            var numbersForReceipt = [];
+
+            for (var i = 0; i < quantity; i++) {
+                var tagNumber = getRandomNumber();
+                numbersForReceipt.push(tagNumber);
+
+                var tagHTML = `
+                    <div class="tag">
+                        <div class="logo-container">
+                            <img src="https://irp.cdn-website.com/fb21f8a1/dms3rep/multi/Logo_Blue_Tree_Azul.svg" class="logocontainer" alt="Logo">
+                            <div class="tag-number"><b>#</b>${tagNumber}</div>
+                        </div>
+                        <div class="tag-section">
+                            <div class="name"><strong>Nome/Name:</strong> ${name}</div>
+                            <div><strong>Apto/Room:</strong> ${apto}</div>
+                            <div><strong>Data/Date:</strong> ${formattedDateTime}</div>
+                            <div><strong>Assinatura/Signature:</strong>___________________</div>
+                        </div>
+                        <div class="tag-section">
+                            <div class="name"><strong>Nome/Name:</strong> ${name}</div>
+                            <div><strong>Apto/Room:</strong> ${apto}</div>
+                            <div><strong>Data/Date:</strong> ${formattedDateTime}</div>
+                            <div><strong>Assinatura/Signature:</strong>___________________</div>
+                        </div>
+                    </div>
+                    <div class="cut-line"></div>
+                `;
+                tagContainer.innerHTML += tagHTML;
+            }
+
+            var comprovanteHTML = `
+                <div class="tag">
+                    <div class="logo-container">
+                        <img src="https://irp.cdn-website.com/fb21f8a1/dms3rep/multi/Logo_Blue_Tree_Azul.svg" class="logocontainer" alt="Logo">
+                    </div>
+                    <div class="tag-section">
+                        <div class="name"><strong>Nome/Name:</strong> ${name}</div>
+                        <div><strong>Apto/Room:</strong> ${apto}</div>
+                        <div><strong>Data/Date:</strong> ${formattedDateTime}</div>
+                        <div><strong>Quantidade/Amount:</strong> ${quantity}</div>
+                        <div><strong>Número/Number:</strong> ${numbersForReceipt.join(', ')}</div>
+                        <div><strong>Assinatura/Signature:</strong>___________________</div>
+                    </div>
+                    <div class="tag-section disclaimer">
+                        <div style="font-size: 8px; margin-top: 5px; text-align: justify">
+                            O proprietário ou proprietários da bagagem indicados neste recibo, assumem toda a
+                            responsabilidade por danos causados por incêndios, inundações ou estragos de outra
+                            natureza. A <b>Blue Tree Hotels</b> se compromete unicamente a cuidar de objetos depositados
+                            como bens próprios, sem que se responsabilize pelo conteúdo dos mesmos.
+                            Os objetos mencionados no verso serão devolvidos contra a apresentação deste recibo.
+                            <b>Os objetos deixados no Hotel serão guardados pelo período de 90 dias, sendo
+                            que após este período os mesmos serão doados para instituições de caridade.</b>
+                            <br></br>
+                            <i>The owner or owners of the luggage indicated in this receipt assume full responsibility 
+                            for damages caused by fires, floods, or other destruction. <b>Blue Tree Hotels</b> only commit 
+                            to taking care of deposited items as their own property, without assuming responsibility 
+                            for their contents. The items mentioned on the reverse will be returned upon presentation 
+                            of this receipt. <b>Items left at the Hotel will be stored for a period of 90 days, after 
+                            which they will be donated to charity institutions.</b></i>
+                        </div>
+                    </div>
+                </div>
+            `;
+            tagContainer.innerHTML += comprovanteHTML;
+        }
+
+        function clearTags() {
+            generatedNumbers.clear();
+            document.getElementById("tags").innerHTML = "";
+			location.reload()
+        }
+
+        function handleKeyPress(event) {
+            if (event.key === "Enter") {
+                generateTag(event);
+            }
+        }
+    </script>
+</body>
+</html>

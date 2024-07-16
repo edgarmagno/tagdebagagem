@@ -1,0 +1,256 @@
+/* Estilo geral */
+body {
+    font-family: 'Calibri', sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: 15px;
+    background-color: #e3e3e3;
+    opacity: 0.9;
+}
+
+.content-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0px;
+}
+
+.form-container {
+    background: #fff;
+    padding: 30px;
+    border-radius: 0px 10px 10px 0px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+    margin-bottom: 22px;
+    margin-top: 20px;
+    width: 100%;
+    height: auto;
+    text-align: center;
+}
+
+.form-container div {
+    display: block;
+    margin-bottom: 10px;
+    line-height: 100%;
+}
+
+.form-container label {
+    display: block;
+    margin-right: 10px;
+}
+
+.image-container img {
+    width: 240px;
+    height: 300px;
+    align-items: center;
+    object-fit: cover;
+    border-radius: 10px 0px 0px 10px;
+    box-shadow: 0 15 15px rgba(0, 0, 0, 0.1);
+}
+
+.tag-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0px;
+    page-break-inside: avoid;
+}
+
+.tag {
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+    max-width: 19.5cm;
+    border: 1px solid #36454F;
+    padding: 20px;
+    border-radius: 7px;
+    background-color: #fff;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+    page-break-inside: auto;
+    justify-content: space-between;
+    align-items: flex-end;
+}
+
+.tag-section {
+    font-size: 16px;
+    width: 48%;
+    text-align: left;
+}
+
+.tag-section div {
+    margin-bottom: 8px;
+    font-size: 14px;
+}
+
+.tag-section .name {
+    font-size: 16px;
+    font-weight: bold;
+    color: #000;
+}
+
+.tag-section:last-child {
+    border-left: 1px dashed #000;
+    padding-left: 10px;
+}
+
+.button-container {
+    max-width: 650px;
+    text-align: left;
+    margin-bottom: 25px;
+    flex-wrap: wrap;
+}
+
+.button-container button {
+    flex: 1px;
+    padding: 10px 25px;
+    border: none;
+    border-radius: 7px;
+    cursor: pointer;
+    font-size: 18px;
+    text-align: center;
+}
+
+.print-button {
+    background-color: #1b3f81;
+    color: #ffffff;
+}
+
+.print-button:hover {
+    background-color: #203763;
+}
+
+.refresh-button {
+    background-color: #085d8b;
+    color: #ffffff;
+}
+
+.refresh-button:hover {
+    background-color: #073b58;
+}
+
+.generate-button {
+    background-color: #124e06;
+    color: #ffffff;
+}
+
+.generate-button:hover {
+    background-color: #0f3a07;
+}
+
+.cut-line {
+    border-top: 1px dashed #000;
+    width: 100%;
+    margin: 10px 0;
+}
+
+.logo-container {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    flex-direction: row;
+}
+
+.logo {
+    width: 200px;
+    margin-top: 15px;
+}
+
+.logocontainer {
+    width: 80px;
+    margin-bottom: 5px;
+}
+
+.tag-number {
+    font-size: 20px;
+    font-weight: bold;
+    margin-right: 10px;
+}
+
+.disclaimer {
+    font-size: 8px;
+    margin-top: 5px;
+    text-align: justify;
+}
+
+/* Estilo para blocos de input */
+div.input-block {
+    position: relative;
+}
+
+div.input-block input {
+    font-size: 0.8rem;
+    color: #495055;
+    width: 88%;
+    height: 100%;
+    margin: 3px;
+    padding: 15px 15px;
+    border-radius: 8px;
+    border: 1.5px solid #D9D9D9;
+    outline: none;
+}
+
+div.input-block span.placeholder {
+    position: absolute;
+    margin: 20px 0;
+    padding: 0 4px;
+    font-family: Roboto, sans-serif;
+    color: #6c757d;
+    display: flex;
+    align-items: center;
+    font-size: 1.3rem;
+    top: 0;
+    left: 17px;
+    transition: all 0.2s;
+    transform-origin: 0% 0%;
+    background: none;
+    pointer-events: none;
+}
+
+div.input-block input:valid + span.placeholder,
+div.input-block input:focus + span.placeholder {
+    transform: scale(0.8) translateY(-30px);
+    background: #fff;
+}
+
+div.input-block input:focus {
+    color: #284B63;
+    border-color: #284B63;
+}
+
+div.input-block input:focus + span.placeholder {
+    color: #284B63;
+}
+
+@media print {
+    body * {
+        visibility: hidden;
+    }
+
+    .tag-container, .tag-container * {
+        visibility: visible;
+    }
+
+    .tag {
+        page-break-inside: avoid;
+    }
+
+    .tag-container {
+        position: absolute;
+        left: 10px;
+        top: 10px;
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .tag:last-child {
+        page-break-after: auto;
+    }
+
+    @page {
+        size: portrait;
+        margin: 1 cm;
+    }
+}
