@@ -6,7 +6,7 @@ body {
     align-items: center;
     justify-content: center;
     margin: 15px;
-    background-color: #e3e3e3;
+    background-color: #ffffff;
     opacity: 0.9;
 }
 
@@ -51,6 +51,7 @@ body {
 
 .tag-container {
     display: flex;
+	margin-top: 20px;
     flex-direction: column;
     align-items: center;
     gap: 0px;
@@ -61,11 +62,11 @@ body {
     display: flex;
     flex-wrap: wrap;
     width: 100%;
+	height: auto;
     max-width: 19cm;
     border: 1px solid #36454F;
     padding: 20px;
-    border-radius: 7px;
-    background-color: #fff;
+	background-image: url("747x243.jpg");
     box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
     page-break-inside: auto;
     justify-content: space-between;
@@ -74,6 +75,7 @@ body {
 
 .tag-section {
     font-size: 16px;
+	margin-top: 20px;
     width: 48%;
     text-align: left;
 }
@@ -163,12 +165,13 @@ body {
 
 .tag-number {
     font-size: 20px;
+    color: #D9D9D9;
     font-weight: bold;
     margin-right: 10px;
 }
 
 .disclaimer {
-    font-size: 8px;
+    font-size: 10px;
     margin-top: 5px;
     text-align: justify;
 }
@@ -225,32 +228,38 @@ div.input-block input:focus + span.placeholder {
 @media print {
     body * {
         visibility: hidden;
+		
     }
 
     .tag-container, .tag-container * {
         visibility: visible;
+		
     }
 
     .tag {
         page-break-inside: avoid;
+        
     }
 
     .tag-container {
         position: absolute;
-        left: 10px;
+        background-image: url("747x243.jpg");
+        background-repeat: no-repeat;
         top: 10px;
         width: 100%;
         display: flex;
         flex-direction: column;
         align-items: flex-start;
     }
+    
 
     .tag:last-child {
         page-break-after: auto;
     }
-
+	
+	
     @page {
         size: portrait;
-        margin: 1 cm;
+        margin: 0.5 cm;
     }
 }
