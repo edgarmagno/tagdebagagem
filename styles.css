@@ -4,24 +4,23 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
+    justify-content: left;
     margin: 15px;
-    background-color: #ffffff;
+    background-color: #e0e0e0;
     opacity: 0.9;
 }
 
 .content-container {
     display: flex;
     align-items: center;
-    justify-content: center;
-    gap: 0px;
+    justify-content: left;
 }
 
 .form-container {
-    background: #fff;
+    background: #ffffff;
     padding: 30px;
     border-radius: 0px 10px 10px 0px;
-    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+    box-shadow: 15px 15px 15px rgba(0, 0, 0, 0.1);
     margin-bottom: 22px;
     margin-top: 20px;
     width: 100%;
@@ -40,64 +39,95 @@ body {
     margin-right: 10px;
 }
 
-.image-container img {
-    width: 240px;
-    height: 300px;
+.image-container img { /*foto da mala*/
+    width: 250px;
+    height: 304px;
+	margin-top: 3px;
     align-items: center;
     object-fit: cover;
     border-radius: 10px 0px 0px 10px;
-    box-shadow: 0 15 15px rgba(0, 0, 0, 0.1);
+    box-shadow: 15px 15px 15px rgba(0, 0, 0, 0.1);
 }
 
-.tag-container {
-    display: flex;
-	margin-top: 20px;
-    flex-direction: column;
-    align-items: center;
-    gap: 0px;
-    page-break-inside: avoid;
+
+.logocontainer { /*fundo da tag*/
+    width: 1px;
 }
+
+.column1, .column2 {
+    font-size: 1.0rem;
+    margin: 10px;
+    margin-top: 60px;
+    margin-bottom: 10px;
+    flex: 50%; /* Cada coluna ocupará o mesmo espaço */
+    line-height: 1.6;
+    max-width: calc(50% + 50px);
+
+}
+
+.column3 {
+    font-size: 1.0rem;
+    margin: 10px;
+    margin-top: 60px;
+    margin-bottom: 10px;
+    flex: 50%; /* Cada coluna ocupará o mesmo espaço */
+    line-height: 1.6;
+    max-width: calc(50% + 50px);
+
+}
+
+.column4 {
+    font-size: 0.4rem;
+	text-align: justify;
+    margin: 10px;
+    margin-top: 60px;
+    margin-bottom: 10px;
+    flex: 50%; /* Cada coluna ocupará o mesmo espaço */
+    line-height: 1.6;
+    max-width: calc(50% + 50px);
+
+}
+
+/* ITENS DA TAG */
 
 .tag {
     display: flex;
-    flex-wrap: wrap;
-    width: 100%;
-	height: auto;
-    max-width: 19cm;
+    align-items: flex-start;
+    width: 747px;
+    height: 191px;
     border: 1px solid #36454F;
-    padding: 20px;
-	background-image: url("747x243.jpg");
     box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
-    page-break-inside: auto;
-    justify-content: space-between;
-    align-items: flex-end;
+    
 }
 
-.tag-section {
-    font-size: 16px;
-	margin-top: 20px;
-    width: 48%;
-    text-align: left;
+/* TAG DO CLIENTE */
+
+.tagdisclaimer {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    font-size: 1.2rem;    
+    width: 747px;
+    height: 243px;
+    border: 1px solid #36454F;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+    
 }
 
 .tag-section div {
-    margin-bottom: 8px;
+    margin-bottom: 2px; /* divisao da  linha do texto*/
     font-size: 14px;
-}
 
-.tag-section .name {
-    font-size: 16px;
-    font-weight: bold;
-    color: #000;
 }
 
 .tag-section:last-child {
-    border-left: 1px dashed #000;
     padding-left: 10px;
 }
 
+/* BOTOES */
+
 .button-container {
-    max-width: 650px;
+    max-width: 640px;
     text-align: left;
     margin-bottom: 25px;
     flex-wrap: wrap;
@@ -146,34 +176,21 @@ body {
     margin: 10px 0;
 }
 
-.logo-container {
-    display: flex;
-    width: 100%;
-    justify-content: space-between;
-    flex-direction: row;
-}
 
 .logo {
     width: 200px;
     margin-top: 15px;
 }
 
-.logocontainer {
-    width: 80px;
-    margin-bottom: 5px;
-}
-
 .tag-number {
+    position: absolute;
     font-size: 20px;
-    color: #D9D9D9;
+    margin-top: 15px;
+    margin-left: 700px;
+    color: #ffffff;
     font-weight: bold;
-    margin-right: 10px;
-}
+	border: 1px solid #ccc;
 
-.disclaimer {
-    font-size: 10px;
-    margin-top: 5px;
-    text-align: justify;
 }
 
 /* Estilo para blocos de input */
@@ -243,7 +260,6 @@ div.input-block input:focus + span.placeholder {
 
     .tag-container {
         position: absolute;
-        background-image: url("747x243.jpg");
         background-repeat: no-repeat;
         top: 10px;
         width: 100%;

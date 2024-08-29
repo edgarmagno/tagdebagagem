@@ -86,22 +86,24 @@
                 numbersForReceipt.push(tagNumber);
 
                 var tagHTML = `
-                    <div class="tag">
-                        <div class="logo-container">
-                            <br> </br>
-                            <div class="tag-number"><b>#</b>${tagNumber}</div>
+                
+			   <div class="tag">
+					<div class="tag-number"><b>#</b>${tagNumber}</div>
+                        <div class="logocontainer">
+                            <img src="747x191.jpg" alt="Logo">
                         </div>
-                        <div class="tag-section">
-                            <div class="name">Nome/Name: ${name}</div>
+                        <div class="column1">
+                            <div class="name">Nome/Name: <b>${name}</b></div>
                             <div>Apto/Room:<strong>${apto}</strong></div>
                             <div>Data/Date: <strong>${formattedDateTime}</strong></div>
-                            <div>Assinatura/Signature:___________________</div>
+                            <div>Assinatura/Sign:________________</div>
                         </div>
-                        <div class="tag-section">
-                            <div class="name">Nome/Name: ${name}</div>
+                        <div 
+                        <div class="column2">
+                            <div class="name">Nome/Name: <b>${name}</b></div>
                             <div>Apto/Room: <strong>${apto}</strong></div>
                             <div>Data/Date: <strong>${formattedDateTime}</strong></div>
-                            <div>Assinatura/Signature:___________________</div>
+                            <div>Assinatura/Sign:________________</div>
                         </div>
                     </div>
                     <div class="cut-line"></div>
@@ -109,19 +111,20 @@
                 tagContainer.innerHTML += tagHTML;
             }
 
-            var comprovanteHTML = `
-                <div class="tag">
-                    <div class="tag-section">
-                        <br></br>
-						<div class="name"><strong>Nome/Name:</strong> ${name}</div>
+            var comprovanteHTML =`
+                <div class="tagdisclaimer">
+                    <div class="logocontainer">
+                            <img src="747x243.jpg" alt="Logo">
+                        </div>
+                    <div class="column3">
+                    <div class="name"><strong>Nome/Name:</strong> ${name}</div>
                         <div><strong>Apto/Room:</strong> ${apto}</div>
                         <div><strong>Data/Date:</strong> ${formattedDateTime}</div>
                         <div><strong>Quantidade/Amount:</strong> ${quantity}</div>
                         <div><strong>Número/Number:</strong> ${numbersForReceipt.join(', ')}</div>
-                        <div><strong>Assinatura/Signature:</strong>___________________</div>
+                        <div><strong>Assinatura/Sign:</strong>________________</div>
                     </div>
-                    <div class="tag-section disclaimer">
-                        <div style="font-size: 8px; margin-top: 5px; text-align: justify">
+                    <div class="column4">
                             O proprietário ou proprietários da bagagem indicados neste recibo, assumem toda a
                             responsabilidade por danos causados por incêndios, inundações ou estragos de outra
                             natureza. A <b>Blue Tree Hotels</b> se compromete unicamente a cuidar de objetos depositados
@@ -129,15 +132,13 @@
                             Os objetos mencionados no verso serão devolvidos contra a apresentação deste recibo.
                             <b>Os objetos deixados no Hotel serão guardados pelo período de 90 dias, sendo
                             que após este período os mesmos serão doados para instituições de caridade.</b>
-                            <br></br>
                             <i>The owner or owners of the luggage indicated in this receipt assume full responsibility 
                             for damages caused by fires, floods, or other destruction. <b>Blue Tree Hotels</b> only commit 
                             to taking care of deposited items as their own property, without assuming responsibility 
                             for their contents. The items mentioned on the reverse will be returned upon presentation 
                             of this receipt. <b>Items left at the Hotel will be stored for a period of 90 days, after 
                             which they will be donated to charity institutions.</b></i>
-                        </div>
-                    </div>
+                       </div>
                 </div>
             `;
             tagContainer.innerHTML += comprovanteHTML;
